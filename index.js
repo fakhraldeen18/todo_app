@@ -45,3 +45,23 @@ addTodoBtn.addEventListener("click", (e) => {
   addToDos(input);
   e.preventDefault();
 });
+
+
+//Deleting a Todo:
+form.addEventListener("click", (e) => {
+  if (e.target.tagName === "SPAN") {
+    e.target.parentElement.remove();
+  }
+  else if (e.target.tagName === "LI") {
+    e.target.classList.toggle("checked");
+  }
+  e.preventDefault();
+});
+
+// Deleting All Todos
+const deleteAllBtn = document.querySelector(".delete-all-btn");
+deleteAllBtn.addEventListener("click", () => {
+  console.log("Deleteing All Todos");
+  todolist = [];
+  renderTodo(todolist);
+});

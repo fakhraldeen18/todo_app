@@ -1,4 +1,14 @@
-let todolist = ["Create To do App"];
+let todolist = [
+  {
+    title: "Create To Do Application",
+    description: "Create index.html file and index.js file",
+  },
+
+  {
+    title: "Push the To Do Application in GitHub",
+    description: "use git add and commit to push",
+  },
+];
 const form = document.querySelector(".todo-form");
 const ul = document.createElement("ul");
 ul.classList.add("todo-ul");
@@ -11,7 +21,11 @@ function renderTodo(array) {
     const li = document.createElement("li");
     li.classList.add("todo-item");
     ul.appendChild(li);
-    li.textContent = element;
+    const description = document.createElement("p");
+    description.classList.add("todo-description");
+    description.textContent = element.description;
+    li.textContent = element.title;
+    li.appendChild(description);
     //   -------------------------
     const deleteButton = document.createElement("span");
     deleteButton.classList.add("delete-button");
@@ -22,37 +36,42 @@ function renderTodo(array) {
 renderTodo(todolist);
 
 // Adding a Todo
-function addToDos(input) {
-    if(input.value === ""){
-        alert("Please enter a todo");
-    }
-    else{
-  const li = document.createElement("li");
-  li.classList.add("todo-item");
-  li.textContent = input.value;
-  ul.appendChild(li);
-  input.value = "";
-  // ---------------------
-  const deleteButton = document.createElement("span");
-  deleteButton.classList.add("delete-button");
-  deleteButton.textContent = "\u00D7";
-  li.appendChild(deleteButton);
-    }
+function addToDos(input, inputDescription) {
+  if (input.value === "") {
+    alert("Please enter a todo");
+  } else if (inputDescription.value === "") {
+    alert("Please enter a Description");
+  } else {
+    const li = document.createElement("li");
+    li.classList.add("todo-item");
+    li.textContent = input.value;
+    ul.appendChild(li);
+    input.value = "";
+    const description = document.createElement("p");
+    description.classList.add("todo-description");
+    description.textContent = inputDescription.value;
+    li.appendChild(description);
+    inputDescription.value = "";
+    // ---------------------
+    const deleteButton = document.createElement("span");
+    deleteButton.classList.add("delete-button");
+    deleteButton.textContent = "\u00D7";
+    li.appendChild(deleteButton);
+  }
 }
 const addTodoBtn = document.querySelector(".todo-btn");
 addTodoBtn.addEventListener("click", (e) => {
   let input = document.querySelector(".todo-input");
-  addToDos(input);
+  let inputDescription = document.querySelector(".todo-input-des");
+  addToDos(input, inputDescription);
   e.preventDefault();
 });
-
 
 //Deleting a Todo:
 form.addEventListener("click", (e) => {
   if (e.target.tagName === "SPAN") {
     e.target.parentElement.remove();
-  }
-  else if (e.target.tagName === "LI") {
+  } else if (e.target.tagName === "LI") {
     e.target.classList.toggle("checked");
   }
   e.preventDefault();

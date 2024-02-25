@@ -13,6 +13,10 @@ const form = document.querySelector(".todo-form");
 const ul = document.createElement("ul");
 ul.classList.add("todo-ul");
 form.appendChild(ul);
+const count = document.querySelector(".count");
+let span = document.createElement("span");
+span.textContent = 0;
+count.appendChild(span);
 
 // Rendering Todo List
 function renderTodo(array) {
@@ -32,14 +36,15 @@ function renderTodo(array) {
     deleteButton.textContent = "\u00D7";
     li.appendChild(deleteButton);
   });
+  span.textContent = todolist.length;
 }
 renderTodo(todolist);
 
 // Adding a Todo
 function addToDos(input, inputDescription) {
-  if (input.value === "") {
+  if (!input.value) {
     alert("Please enter a todo");
-  } else if (inputDescription.value === "") {
+  } else if (!inputDescription.value) {
     alert("Please enter a Description");
   } else {
     const li = document.createElement("li");
@@ -57,24 +62,26 @@ function addToDos(input, inputDescription) {
     deleteButton.classList.add("delete-button");
     deleteButton.textContent = "\u00D7";
     li.appendChild(deleteButton);
+    span.textContent++;
   }
 }
 const addTodoBtn = document.querySelector(".todo-btn");
 addTodoBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   let input = document.querySelector(".todo-input");
   let inputDescription = document.querySelector(".todo-input-des");
   addToDos(input, inputDescription);
-  e.preventDefault();
 });
 
 //Deleting a Todo:
 form.addEventListener("click", (e) => {
+  e.preventDefault();
   if (e.target.tagName === "SPAN") {
     e.target.parentElement.remove();
+    span.textContent--;
   } else if (e.target.tagName === "LI") {
     e.target.classList.toggle("checked");
   }
-  e.preventDefault();
 });
 
 // Deleting All Todos

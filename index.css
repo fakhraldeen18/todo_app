@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+      color: dimgrey;
+}
+
+button {
+  margin: 5px;
+  cursor: pointer;
+  width: 45%;
+  font-size: 17px;
+  padding: 12px;
+  margin: 8px 3px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.div-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-btn {
+  color: white;
+  background-color: green;
+}
+.delete-all-btn {
+  background-color: red;
+  color: white;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+input[type="text"] {
+  width: 87%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: 'Times New Roman', Times, serif;
+font-size: 17px;
+}
+.tital {
+  text-align: center;
+  font-size: 50px;
+}
+
+.container {
+  background-color: rgb(46, 150, 150);
+  height: 99.7vh;
+  width: auto;
+  padding: 1px;
+}
+.todo-container {
+  background-color: #fff;
+  width: 100%;
+  max-width: 540px;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.todo-form {
+  margin-top: 20px;
+}
+.todo-ul .todo-item {
+  list-style: none;
+  font-size: 20px;
+  user-select: none;
+  padding: 12px 8px 12px 50px;
+  cursor: pointer;
+  position: relative;
+}
+.todo-ul .todo-item::before {
+  content: "";
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background-image: url(/img/unchecked.png);
+  background-size: cover;
+  background-position: center;
+  top: 12px;
+  left: 8px;
+}
+.todo-ul .todo-item.checked {
+  color: gray;
+  text-decoration: line-through;
+}
+.todo-ul .todo-item.checked::before {
+  background-image: url(/img/checked.png);
+}
+
+.todo-ul .todo-item .delete-button {
+  position: absolute;
+  right: -40px;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  color: #555;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.todo-ul .todo-item .delete-button:hover {
+  background-color: #edeef0;
+}
+.count {
+  position: relative;
+  top: 42px;
+  right: 239px;
+  background-color: #555;
+  margin: 5px;
+  padding: 12px;
+  margin: 8px 3px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: white;
+}

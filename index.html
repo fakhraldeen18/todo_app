@@ -11,14 +11,30 @@
     <div class="container">
       <div class="todo-container">
         <h1 class="tital">To Do App</h1>
-        <form class="todo-form">
+        <form class="edit-form">
           <div class="inputs">
-            <input class="todo-input" type="text" placeholder="add todo" />
-            <input class="todo-input-des" type="text" placeholder="add todo description"/>
+            <input class="edit-input" type="text" />
+            <!-- <input class="edit-input-des" type="text"  /> -->
+            <textarea name="description" class="edit-input-des" cols="25" rows="3"></textarea>
           </div>
           <div class="div-btn">
-            <button class="todo-btn" type="submit">Add</button>
-            <button class="delete-all-btn" type="button">Delete All</button>
+            <button class="edit-btn" type="submit">Edit</button>
+          </div>
+        </form>
+        <form class="todo-form">
+          <div class="oo">
+            <div class="inputs">
+              <input class="todo-input" type="text" placeholder="add todo" />
+              <input
+                class="todo-input-des"
+                type="text"
+                placeholder="add todo description"
+              />
+            </div>
+            <div class="div-btn">
+              <button class="todo-btn" type="submit">Add</button>
+              <button class="delete-all-btn" type="button">Delete All</button>
+            </div>
           </div>
         </form>
         <p class="count">Count:</p>

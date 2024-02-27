@@ -28,17 +28,47 @@ function renderTodo(array) {
     const description = document.createElement("p");
     description.classList.add("todo-description");
     description.textContent = element.description;
-    li.textContent = element.title;
+
+    const title = document.createElement("p");
+    title.classList.add("todo-title");
+    title.textContent = element.title;
+    // li.textContent = element.title;
+    li.appendChild(title);
     li.appendChild(description);
     //   -------------------------
     const deleteButton = document.createElement("span");
     deleteButton.classList.add("delete-button");
     deleteButton.textContent = "\u00D7";
+    deleteButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      deleteTodo(title.textContent);
+    });
     li.appendChild(deleteButton);
+
+    const editButton = document.createElement("button");
+    editButton.classList.add("edit-button");
+    editButton.textContent = "Edit";
+    li.appendChild(editButton);
   });
   span.textContent = todolist.length;
 }
+
 renderTodo(todolist);
+// Edit Todo
+const editBtns = document.querySelectorAll(".edit-button");
+editBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const todo = e.target.parentElement;
+    let selectdTital = todo.querySelector(".todo-title");
+    const valueOfTital = prompt("Update the Todo", selectdTital.textContent);
+    selectdTital.textContent = valueOfTital;
+
+    const selectDescription = todo.querySelector(".todo-description");
+    const valueOfDescription = prompt("Update the description",selectDescription.textContent);
+    selectDescription.textContent = valueOfDescription;
+  });
+});
 
 // Adding a Todo
 function addToDos(input, inputDescription) {
@@ -49,9 +79,14 @@ function addToDos(input, inputDescription) {
   } else {
     const li = document.createElement("li");
     li.classList.add("todo-item");
-    li.textContent = input.value;
+    // li.textContent = input.value;
     ul.appendChild(li);
+    const title = document.createElement("p");
+    title.classList.add("todo-title");
+    title.textContent = input.value;
+    li.appendChild(title);
     input.value = "";
+
     const description = document.createElement("p");
     description.classList.add("todo-description");
     description.textContent = inputDescription.value;
@@ -61,8 +96,43 @@ function addToDos(input, inputDescription) {
     const deleteButton = document.createElement("span");
     deleteButton.classList.add("delete-button");
     deleteButton.textContent = "\u00D7";
+    deleteButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      deleteTodo(title.textContent);
+    });
+
     li.appendChild(deleteButton);
+    const editButton = document.createElement("button");
+    editButton.classList.add("edit-button");
+    editButton.textContent = "Edit";
+
+    //edited
+      editButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        const todo = e.target.parentElement;
+        let selectdTital = todo.querySelector(".todo-title");
+        const valueOfTital = prompt(
+          "Update the Todo",
+          selectdTital.textContent
+        );
+        selectdTital.textContent = valueOfTital;
+
+        const selectDescription = todo.querySelector(".todo-description");
+        const valueOfDescription = prompt(
+          "Update the description",
+          selectDescription.textContent
+        );
+        selectDescription.textContent = valueOfDescription;
+      });
+
+
+    li.appendChild(editButton);
     span.textContent++;
+    const newtodo = {
+      title: title.textContent,
+      description: description.textContent,
+    };
+    todolist.push(newtodo);
   }
 }
 const addTodoBtn = document.querySelector(".todo-btn");
@@ -71,15 +141,24 @@ addTodoBtn.addEventListener("click", (e) => {
   let input = document.querySelector(".todo-input");
   let inputDescription = document.querySelector(".todo-input-des");
   addToDos(input, inputDescription);
+  console.log(todolist);
 });
 
 //Deleting a Todo:
+function deleteTodo(value) {
+  const deleteItem = todolist.filter((item) => {
+    return item.title !== value;
+  });
+  ul.textContent = "";
+  todolist = deleteItem;
+  renderTodo(todolist);
+}
 form.addEventListener("click", (e) => {
   e.preventDefault();
-  if (e.target.tagName === "SPAN") {
-    e.target.parentElement.remove();
-    span.textContent--;
-  } else if (e.target.tagName === "LI") {
+  // if (e.target.tagName === "SPAN") {
+  //   e.target.parentElement.remove();
+  //   span.textContent--;
+  if (e.target.tagName === "LI") {
     e.target.classList.toggle("checked");
   }
 });

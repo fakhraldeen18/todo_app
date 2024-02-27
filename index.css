@@ -3,14 +3,14 @@
   padding: 0;
 }
 
-h1{
-      color: dimgrey;
+h1 {
+  color: dimgrey;
 }
 
 button {
   margin: 5px;
   cursor: pointer;
-  width: 45%;
+  width: 46%;
   font-size: 17px;
   padding: 12px;
   margin: 8px 3px;
@@ -18,7 +18,7 @@ button {
   border: 1px solid #ccc;
   box-sizing: border-box;
   border-radius: 5px;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 .div-btn {
   display: flex;
@@ -39,7 +39,6 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 input[type="text"] {
   width: 87%;
@@ -49,25 +48,40 @@ input[type="text"] {
   border: 1px solid #ccc;
   box-sizing: border-box;
   border-radius: 5px;
-  font-family: 'Times New Roman', Times, serif;
-font-size: 17px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px;
+}
+textarea {
+  width: 87%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px;
+}
+.edit-form{
+  margin-top: 12px;
 }
 .tital {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
 }
 
 .container {
   background-color: rgb(46, 150, 150);
-  height: 99.7vh;
-  width: auto;
-  padding: 1px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .todo-container {
   background-color: #fff;
   width: 100%;
   max-width: 540px;
-  margin: 100px auto 20px;
+  margin: 50px auto 20px;
   padding: 40px 30px 70px;
   border-radius: 10px;
   display: flex;
@@ -79,11 +93,14 @@ font-size: 17px;
 }
 .todo-ul .todo-item {
   list-style: none;
-  font-size: 20px;
+  font-size: 17px;
   user-select: none;
-  padding: 12px 8px 12px 50px;
+  padding: 12px 8px 19px 50px;
   cursor: pointer;
   position: relative;
+}
+.todo-description {
+  margin-top: 8px;
 }
 .todo-ul .todo-item::before {
   content: "";
@@ -111,7 +128,7 @@ font-size: 17px;
   top: 5px;
   width: 40px;
   height: 40px;
-  font-size: 22px;
+  font-size: 18px;
   color: #555;
   line-height: 40px;
   text-align: center;
@@ -134,4 +151,7 @@ font-size: 17px;
   box-sizing: border-box;
   border-radius: 5px;
   color: white;
+}
+.edit-form {
+  display: none;
 }
